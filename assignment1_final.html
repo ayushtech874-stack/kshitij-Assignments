@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Portfolio</title>
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: honeydew;
+      color: black;
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 1rem;
+    }
+
+    /* ===== NAVBAR ===== */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 999;
+      background-color: #0f0f13;
+      border-bottom: 1px solid #2a2a3a;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+      height: 60px;
+    }
+
+    .logo {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 1.2rem;
+      color: #7c6af5;
+      text-decoration: none;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 0.5rem;
+      list-style: none;
+    }
+
+    nav ul a {
+      color: #8888a0;
+      text-decoration: none;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      transition: color 0.2s, background-color 0.2s;
+    }
+
+    nav ul a:hover {
+      color: #e8e8f0;
+      background-color: rgba(124, 106, 245, 0.15);
+    }
+
+    main {
+      padding-top: 60px;
+    }
+
+    section {
+      min-height: 100vh;
+      padding: 4rem 2rem;
+    }
+
+    /* ===== HERO SECTION ===== */
+
+    #hero {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background-color: #f0fff0;
+    }
+
+    .hero-content {
+      max-width: 650px;
+    }
+
+    .hero-greeting {
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: #555555;
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+
+    .hero-name {
+      font-size: 3.5rem;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 16px;
+      background: linear-gradient(to right, #7c6af5, #c084fc, #38bdf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-role {
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: #666666;
+      line-height: 1.7;
+    }
+
+    /* ===== PROJECTS SECTION ===== */
+
+    .projects-title {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 2.5rem;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .project-card {
+      border: 1px solid #cccccc;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      padding: 1.5rem;
+      background-color: #ffffff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    /* ===== CONTACT SECTION ===== */
+
+    #contact {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .contact-title {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      border: none;
+      outline: none;
+      padding: 0.8rem 1rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: 'Times New Roman', Times, serif;
+      background-color: #ffffff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .contact-form textarea {
+      height: 150px;
+      resize: vertical;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      box-shadow: 0 0 0 3px rgba(124, 106, 245, 0.4);
+    }
+
+    .contact-form button {
+      padding: 0.8rem;
+      border: none;
+      border-radius: 8px;
+      background-color: #7c6af5;
+      color: #ffffff;
+      font-size: 1rem;
+      font-family: 'Times New Roman', Times, serif;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .contact-form button:hover {
+      background-color: #5f4fd6;
+    }
+
+    /* ===== FOOTER ===== */
+
+    /* a. Footer structure */
+    footer {
+      background-color: #0f0f13;
+      color: #8888a0;
+      text-align: center;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    /* a. Profile links */
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    /* b. Links open in new tab + hover color change */
+    .footer-links a {
+      color: #8888a0;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      color: #7c6af5;
+    }
+
+    /* a. Copyright notice */
+    .footer-copy {
+      font-size: 0.85rem;
+      color: #555566;
+    }
+
+    /* BONUS: Back to Top button */
+    .back-to-top {
+      display: inline-block;
+      background-color: #7c6af5;
+      color: #ffffff;
+      text-decoration: none;
+      padding: 0.5rem 1.2rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      transition: background-color 0.2s ease;
+    }
+
+    .back-to-top:hover {
+      background-color: #5f4fd6;
+    }
+
+    /* ===== BONUS A: RESPONSIVE DESIGN ===== */
+
+    @media (max-width: 768px) {
+
+      /* Scale down hero name on small screens */
+      .hero-name {
+        font-size: 2.2rem;
+      }
+
+      /* Change grid from 3 columns to 1 column */
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+    /* ===== BONUS B: DARK MODE (hidden checkbox + :has selector) ===== */
+
+    /* Hide the checkbox — it only acts as a toggle switch */
+    #dark-mode-toggle {
+      display: none;
+    }
+
+    /* Dark mode label button — visible to the user */
+    .dark-mode-label {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background-color: #7c6af5;
+      color: #ffffff;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      z-index: 999;
+      user-select: none;
+    }
+
+    /* When checkbox is checked, apply dark mode to body and all sections */
+    body:has(#dark-mode-toggle:checked) {
+      background-color: #1a1a2e;
+      color: #e8e8f0;
+    }
+
+    body:has(#dark-mode-toggle:checked) #hero {
+      background-color: #16213e;
+    }
+
+    body:has(#dark-mode-toggle:checked) #projects {
+      background-color: #1a1a2e;
+    }
+
+    body:has(#dark-mode-toggle:checked) .projects-title {
+      color: #e8e8f0;
+    }
+
+    body:has(#dark-mode-toggle:checked) .project-card {
+      background-color: #16213e;
+      border-color: #2a2a4a;
+    }
+
+    body:has(#dark-mode-toggle:checked) #contact {
+      background-color: #16213e;
+    }
+
+    body:has(#dark-mode-toggle:checked) .contact-title {
+      color: #e8e8f0;
+    }
+
+    body:has(#dark-mode-toggle:checked) .contact-form input,
+    body:has(#dark-mode-toggle:checked) .contact-form textarea {
+      background-color: #2a2a4a;
+      color: #e8e8f0;
+    }
+
+    body:has(#dark-mode-toggle:checked) .hero-greeting {
+      color: #aaaacc;
+    }
+
+    body:has(#dark-mode-toggle:checked) .hero-role {
+      color: #aaaacc;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- BONUS B: Hidden checkbox for dark mode toggle -->
+  <input type="checkbox" id="dark-mode-toggle" />
+
+  <header>
+    <nav>
+      <a href="#hero" class="logo">Ayush Kumar</a>
+      <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ===== HERO ===== -->
+    <section id="hero">
+      <div class="hero-content">
+        <p class="hero-greeting">Hello, my name is</p>
+        <h1 class="hero-name">Ayush Kumar</h1>
+        <p class="hero-role">Web Developer</p>
+      </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section id="projects">
+      <h2 class="projects-title">My Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card"><p>NaviBharat (Check my repo) </p>
+        <ul><li>An itinerary generator AI website</li></ul></div>
+        <div class="project-card"><p>Cloakyard (Still to be updated on repo)
+            <ul><li>An ecommerce website Work under process</li></ul>
+        </p></div>
+        <div class="project-card"><p>SentinelGate
+            <ul><li>Airport security verification(Under Progress)</li></ul>
+        </p></div>
+    
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact">
+      <h2 class="contact-title">Get in Touch</h2>
+      <form class="contact-form">
+        <input type="text"  placeholder="Your Name" />
+        <input type="email" placeholder="Your Email" />
+        <textarea           placeholder="Your Message"></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+
+    <!-- a. Profile links — b. open in new tab + hover effect -->
+    <ul class="footer-links">
+      <li><a href="https://github.com/ayushtech874-stack"   target="_blank">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/ayush-kumar-b903b7285?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank">LinkedIn</a></li>
+      <li><a href="https://twitter.com"  target="_blank">Twitter</a></li>
+    </ul>
+
+    <!-- a. Copyright notice -->
+    <p class="footer-copy">&copy; 2025 Ayush Kumar. All rights reserved.</p>
+
+    <!-- BONUS: Back to Top button — smooth scroll via html { scroll-behavior: smooth } -->
+    <a href="#hero" class="back-to-top">&#8679; Back to Top</a>
+
+  </footer>
+
+  <!-- BONUS B: Dark mode toggle label (clicking this checks/unchecks the hidden checkbox) -->
+  <label for="dark-mode-toggle" class="dark-mode-label">🌙 Dark Mode</label>
+
+</body>
+</html>
